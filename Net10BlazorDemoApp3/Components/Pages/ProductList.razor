@@ -1,0 +1,47 @@
+﻿@using Net10BlazorDemoApp3.Models
+
+@page "/products"
+@inject Net10BlazorDemoApp3.Data.ProductService ProductService
+
+<h3>Products</h3>
+
+@if (products is null)
+{
+    <p>Loading products...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in products)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Category</td>
+                    <td>@item.Price.ToString("C")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Product>? products;
+
+    protected override void OnInitialized()
+    {
+        products = ProductService.GetAllProducts();
+    }
+}
