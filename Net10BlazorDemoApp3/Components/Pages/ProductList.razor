@@ -28,8 +28,12 @@ else
                     <td>@item.Name</td>
                     <td>@item.Description</td>
                     <td>@item.Category</td>
-                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a href="/products/@item.Id">View</a>
+                    </td>
                 </tr>
+
             }
 
         </tbody>

@@ -1,0 +1,33 @@
+﻿@page "/products/{id:int}"
+@using Net10BlazorDemoApp3.Models
+@inject Net10BlazorDemoApp3.Data.ProductService ProductService
+
+<h3>Product Details</h3>
+
+@if (product is null)
+{
+    <p>Product not found.</p>
+}
+else
+{
+    <div class="card p-3">
+        <h4>@product.Name</h4>
+        <p><strong>Description:</strong> @product.Description</p>
+        <p><strong>Category:</strong> @product.Category</p>
+        <p><strong>Price:</strong> @product.Price</p>
+    </div>
+}
+
+@code {
+    private Product? product;
+
+    protected override void OnInitialized()
+    {
+        product = ProductService
+            .GetAllProducts()
+            .FirstOrDefault(p => p.Id == id);
+    }
+
+    [Parameter]
+    public int id { get; set; }
+}
