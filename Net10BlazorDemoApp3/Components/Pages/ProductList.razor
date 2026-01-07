@@ -1,5 +1,4 @@
 ﻿@using Net10BlazorDemoApp3.Models
-//Added ProductList ui component
 @page "/products"
 @inject Net10BlazorDemoApp3.Data.ProductService ProductService
 
@@ -38,6 +37,8 @@ else
 }
 
 @code {
+    //Added ProductList ui component
+
     private IEnumerable<Product>? products;
 
     protected override void OnInitialized()
