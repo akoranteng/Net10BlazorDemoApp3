@@ -1,37 +1,39 @@
-﻿# 03 – Products UI
+# 04 – Product Details UI
 
-This branch introduces the first UI component in the application. It displays a list of products retrieved from the `ProductService`, completing the flow from model → data → UI.
+This branch introduces the **Product Details** page, completing the navigation flow from the product list to an individual product view. Learners see how Blazor components receive route parameters, retrieve specific data, and render a detailed view.
 
 ## 📁 Files Added
 
-- `Components/Pages/ProductList.razor`
+- `Components/Pages/ProductDetails.razor`
 
 ## 🛠️ Changes Made
 
-- Registered `ProductService` with dependency injection in `Program.cs`
-- Injected the service into the `ProductList` component
-- Loaded product data using `OnInitialized`
-- Rendered the product list in the UI
+- Added a new Razor component for displaying details of a single product  
+- Introduced route parameters using `@page "/products/{id:int}"`  
+- Injected `ProductService` to retrieve the selected product  
+- Added navigation links from the product list to the details page  
+- Updated the service call to match the actual method name in `ProductService`
 
 ## 🎯 Purpose
 
-Learners will understand:
+This branch teaches learners how to:
 
-- how to build a Razor component  
-- how to inject a service into a component  
-- how to load data during component initialization  
-- how to render lists using Razor syntax  
-- how the UI layer consumes the data layer  
+- Navigate between components  
+- Use route parameters to pass data through the URL  
+- Retrieve a single item from a service  
+- Render conditional UI when data is missing  
+- Build a clean details page layout  
 
-This branch represents the first visible output of the application and demonstrates how Blazor components interact with services.
+This is the first branch where the app feels interactive and connected.
 
 ## 🧠 Key Concepts Introduced
 
-- Dependency Injection (DI) in Blazor  
-- Component lifecycle (`OnInitialized`)  
-- Rendering collections  
-- UI composition in MAUI Blazor Hybrid apps  
+- **Route parameters** (`{id:int}`)  
+- **Component parameters** (`[Parameter] public int id { get; set; }`)  
+- **Filtering data** using LINQ  
+- **Navigation from list to details**  
+- **Conditional rendering** for missing or invalid IDs  
 
 ## 🔗 Next Step
 
-Continue to branch `04-ui-product-details` to build a details page for individual products and introduce route parameters.
+Move to branch **05-ui-product-create** to introduce form handling, validation, and adding new products to the list.
