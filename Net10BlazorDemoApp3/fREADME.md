@@ -1,23 +1,31 @@
-﻿✏️ Branch: 05-ui-product-edit
+﻿📘 Product Edit Feature — Branch README
+✏️ Branch: 05-ui-product-edit
 🔧 Feature Introduced
 Implements the Edit Product form using Blazor’s <EditForm> with full model binding, validation, and enhanced navigation support.
 
 📋 What This Branch Adds
-- ProductEdit.razor component with:
-- Editable fields for Name, Description, Category, and Price
+ProductEdit.razor
+- Editable fields for:
+- Name
+- Description
+- Category
+- Price
 - Two‑way binding using @bind-Value
-- Validation via:
+- Validation components:
 - <DataAnnotationsValidator />
 - <ValidationSummary />
-- Submit handling with OnValidSubmit="SaveChanges"
+- Submit handling with:
+- OnValidSubmit="SaveChanges"
 - Required FormName attribute for Blazor Web App POST behavior
-- Safe navigation using NavigationManager.NavigateTo("/products")
-- Updated ProductList.razor:
-- Added Description column to align with edit form
+- Safe navigation using:
+- NavigationManager.NavigateTo("/products")
+Updated ProductList.razor
+- Added Description column to align with the edit form
 - Defensive null checks
 - Clean Bootstrap table styling
 - Currency formatting for price
-- Navigation links to /products/edit/{id}
+- Navigation links to:
+- /products/edit/{id}
 
 🧠 Gotchas & Lessons Learned
 - Blazor Web Apps (.NET 8/10) require a unique FormName for POST forms
@@ -43,12 +51,21 @@ This branch builds on earlier steps:
 - 03-ui-product-list — Product table UI
 - 04-ui-product-details — Detail view
 - 05-ui-product-edit — Edit form with validation and enhanced navigation
-Upcoming branches may include:
+
+Potential Next Branches
 - Delete functionality
 - Toast notifications
 - SQLite or EF Core persistence
 - Curriculum slide scaffolding
 - UI polish and UX enhancements
+
+
+
+
+
+- 
+
+
 
 
 
