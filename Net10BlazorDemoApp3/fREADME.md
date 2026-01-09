@@ -1,41 +1,56 @@
-﻿# 05 – Product Create UI
+﻿✏️ Branch: 05-ui-product-edit
+🔧 Feature Introduced
+Implements the Edit Product form using Blazor’s <EditForm> with full model binding, validation, and enhanced navigation support.
 
-This branch introduces the **Create Product** page, allowing users to add new products through a form with validation. Learners will explore Blazor’s form components, data binding, validation attributes, and service updates.
+📋 What This Branch Adds
+- ProductEdit.razor component with:
+- Editable fields for Name, Description, Category, and Price
+- Two‑way binding using @bind-Value
+- Validation via:
+- <DataAnnotationsValidator />
+- <ValidationSummary />
+- Submit handling with OnValidSubmit="SaveChanges"
+- Required FormName attribute for Blazor Web App POST behavior
+- Safe navigation using NavigationManager.NavigateTo("/products")
+- Updated ProductList.razor:
+- Added Description column to align with edit form
+- Defensive null checks
+- Clean Bootstrap table styling
+- Currency formatting for price
+- Navigation links to /products/edit/{id}
 
-## 📁 Files Added
+🧠 Gotchas & Lessons Learned
+- Blazor Web Apps (.NET 8/10) require a unique FormName for POST forms
+Missing this causes the error:
+“The POST request does not specify which form is being submitted.”
+- Navigation must occur outside conditional blocks to avoid NavigationException.
+- <EditForm> does not infer which form was posted — the FormName attribute is mandatory in enhanced navigation mode.
+- Aligning list and edit views improves clarity and makes the CRUD loop demo‑ready.
 
-- `Components/Pages/ProductCreate.razor`
+🧪 How to Test
+- Navigate to /products
+- Click View on any product
+- Modify any field
+- Click Save
+- Confirm:
+- Redirect back to /products
+- Updated values appear in the list
 
-## 🛠️ Changes Made
+📚 Learning Path Context
+This branch builds on earlier steps:
+- 01-models-product — Product model
+- 02-data-productservice — In‑memory CRUD service
+- 03-ui-product-list — Product table UI
+- 04-ui-product-details — Detail view
+- 05-ui-product-edit — Edit form with validation and enhanced navigation
+Upcoming branches may include:
+- Delete functionality
+- Toast notifications
+- SQLite or EF Core persistence
+- Curriculum slide scaffolding
+- UI polish and UX enhancements
 
-- Added a new Razor component for creating a product  
-- Implemented `<EditForm>` with validation support  
-- Added `DataAnnotations` to the `Product` model  
-- Introduced a new `AddProduct` method in `ProductService`  
-- Added navigation from the product list to the create page  
-- Implemented redirect back to the product list after creation  
 
-## 🎯 Purpose
 
-This branch teaches learners how to:
 
-- Build forms using `<EditForm>`  
-- Use two‑way data binding with `@bind-Value`  
-- Apply validation using `DataAnnotations`  
-- Add new items to an in‑memory service  
-- Navigate programmatically after form submission  
-
-This is the first branch where learners actively modify application state.
-
-## 🧠 Key Concepts Introduced
-
-- **EditForm** and form components  
-- **ValidationMessage** and **ValidationSummary**  
-- **DataAnnotations** (`[Required]`, `[StringLength]`, `[Range]`)  
-- **Two‑way binding**  
-- **Programmatic navigation** using `NavigationManager`  
-- **Service updates** for adding new data  
-
-## 🔗 Next Step
-
-Move to branch **06-ui-product-edit** to introduce editing existing products and deeper validation patterns.
+- 

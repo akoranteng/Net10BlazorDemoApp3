@@ -1,5 +1,4 @@
-﻿@page "/products/{id:int}"
-@using Net10BlazorDemoApp3.Models
+﻿@using Net10BlazorDemoApp3.Models
 @inject Net10BlazorDemoApp3.Data.ProductService ProductService
 
 <h3>Product Details</h3>
@@ -24,7 +23,7 @@ else
     protected override void OnInitialized()
     {
         product = ProductService
-            .GetAllProducts()
+            .GetProducts()
             .FirstOrDefault(p => p.Id == id);
     }
 

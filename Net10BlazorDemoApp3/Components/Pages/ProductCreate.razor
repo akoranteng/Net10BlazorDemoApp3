@@ -1,0 +1,43 @@
+﻿@page "/products/create"
+@using Net10BlazorDemoApp3.Models
+@using Net10BlazorDemoApp3.Data
+@using System.ComponentModel.DataAnnotations
+@inject ProductService ProductService
+@inject NavigationManager NavigationManager
+
+<h3>Create Product</h3>
+
+<EditForm Model="newProduct" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Name:</label>
+        <InputText @bind-Value="newProduct.Name" class="form-control" />
+        <ValidationMessage For="@(() => newProduct.Name!)" />
+    </div>
+
+    <div class="mb-3">
+        <label>Category:</label>
+        <InputText @bind-Value="newProduct.Category" class="form-control" />
+        <ValidationMessage For="@(() => newProduct.Category!)" />
+    </div>
+
+    <div class="mb-3">
+        <label>Price:</label>
+        <InputNumber @bind-Value="newProduct.Price" class="form-control" />
+        <ValidationMessage For="@(() => newProduct.Price)" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+</EditForm>
+
+@code {
+    private Product newProduct = new();
+
+    private void HandleValidSubmit()
+    {
+        ProductService.AddProduct(newProduct);
+        NavigationManager.NavigateTo("/products");
+    }
+}

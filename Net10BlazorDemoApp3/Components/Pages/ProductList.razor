@@ -1,52 +1,53 @@
-﻿@using Net10BlazorDemoApp3.Models
-@page "/products"
-@inject Net10BlazorDemoApp3.Data.ProductService ProductService
+﻿@page "/products"
+@using Net10BlazorDemoApp3.Models
+@using Net10BlazorDemoApp3.Data
+@inject ProductService ProductService
+@inject NavigationManager NavigationManager
 
-<h3>Products</h3>
+<h3>Product List</h3>
 
 @if (products is null)
 {
     <p>Loading products...</p>
+}
+else if (!products.Any())
+{
+    <p>No products available.</p>
 }
 else
 {
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Category</th>
                 <th>Price</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in products)
+            @foreach (var product in products)
             {
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@item.Category</td>
-                    <td>@item.Price</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Category</td>
+                    <td>@product.Price.ToString("C")</td>
                     <td>
-                        <a href="/products/@item.Id">View</a>
+                        <a href="/products/edit/@product.Id" class="btn btn-primary btn-sm">View</a>
                     </td>
                 </tr>
-
             }
-
         </tbody>
     </table>
 }
 
 @code {
-    //Added ProductList ui component
-
     private IEnumerable<Product>? products;
 
     protected override void OnInitialized()
     {
-        products = ProductService.GetAllProducts();
+        products = ProductService.GetProducts();
     }
 }
